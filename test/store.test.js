@@ -1,6 +1,9 @@
 var expect = require('chai').expect;
 
 var store = require ('../src/store').store;
+var book = require('../src/product').Book;
+var dvd = require('../src/product').Dvd;
+var videoGame = require('../src/product').VideoGame;
 
 describe('Store', function() {
 
@@ -23,5 +26,18 @@ describe('Store', function() {
       store.products[6],
       store.products[10]])).to.be.equal(99.22);
   });
+
+  it('book duration should return average duration calculated from minDuration and maxDuration', function() {
+    expect(store.products[0].getDuration()).to.be.equal(140);
+  });
+
+  it('dvd duration should return duration', function() {
+    expect(store.products[4].getDuration()).to.be.equal(178);
+  });
+
+  it('video game duration should return average duration calculated from minDuration and maxDuration', function() {
+    expect(store.products[11].getDuration()).to.be.equal(1000);
+  });
+
 
 });
