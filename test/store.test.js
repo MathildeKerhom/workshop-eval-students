@@ -5,6 +5,11 @@ var book = require('../src/product').Book;
 var dvd = require('../src/product').Dvd;
 var videoGame = require('../src/product').VideoGame;
 
+var criterias = {
+  belowCost: 20,
+  belowDuration: 150
+};
+
 describe('Store', function() {
 
   it('with toString() should return a string', function() {
@@ -15,8 +20,8 @@ describe('Store', function() {
     expect(store.products).to.have.lengthOf(14);
   });
 
-  it('with belowCost criteria should return right products', function() {
-    expect(store.findProducts(20)).to.have.lengthOf(9);
+  it('with belowCost and belowDuration criteria should return right products', function() {
+    expect(store.findProducts(criterias)).to.have.lengthOf(5);
   });
 
   it('with asket should return right price', function() {
