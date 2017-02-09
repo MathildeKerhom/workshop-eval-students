@@ -28,12 +28,11 @@ var products = [
 function findProducts(criterias) {
   var result = [];
   if(criterias.belowCost && criterias.belowDuration) {
-    for (var i = products.length - 1; i >= 0; i--) {
-      var product = products[i];
+    products.forEach((product) => {
       if(product.price <= criterias.belowCost && product.getDuration() <= criterias.belowDuration) {
         result.push(product);
       }
-    }
+    });
   }
   return result;
 }
